@@ -1,0 +1,147 @@
+======================================================================
+DIFFERENTIAL PRIVACY FINE-TUNING WITH LoRA (ACI-Bench)
+======================================================================
+Output directory: runs/dp_lora_20251122_074958
+Device: cuda
+
+======================================================================
+STEP 1: DATA LOADING AND AUGMENTATION
+======================================================================
+Generating train split: 
+ 177/0 [00:00<00:00, 2342.27 examples/s]
+Map: 100%
+ 177/177 [00:00<00:00, 681.15 examples/s]
+
+======================================================================
+DATA AUGMENTATION
+======================================================================
+Original size: 177
+Target size: 2000
+Generating 1823 augmented samples...
+Augmenting: 100%|██████████| 1823/1823 [00:00<00:00, 9633.79it/s] 
+✓ Augmentation complete! Final size: 2000
+Dataset size after augmentation: 2000
+
+======================================================================
+STEP 2: TOKENIZATION AND DATA PROCESSING
+======================================================================
+Processing data: 100%|██████████| 2000/2000 [00:00<00:00, 9960.15it/s] 
+✓ Data splits: train=1600, val=200, test=200
+
+======================================================================
+MODEL SETUP
+======================================================================
+Loading gpt2...
+Applying LoRA configuration...
+Enabling bias-only training...
+Total parameters: 126,799,104
+Trainable parameters: 2,461,440
+Trainable ratio: 1.94%
+Making model DP-compatible...
+/usr/local/lib/python3.12/dist-packages/opacus/privacy_engine.py:96: UserWarning: Secure RNG turned off. This is perfectly fine for experimentation as it allows for much faster training performance, but remember to turn it on and retrain one last time before production with ``secure_mode`` turned on.
+  warnings.warn(
+WARNING:opacus.data_loader:Ignoring drop_last as it is not compatible with DPDataLoader.
+✓ Optimizer: AdamW (lr=3e-05, weight_decay=0.01)
+✓ Scheduler steps: total=800, warmup=48
+
+======================================================================
+STEP 3: SETUP DIFFERENTIAL PRIVACY
+======================================================================
+Sample size for DP: 1600 | Batch size: 16
+✓ Privacy engine configured with 'hooks' mode
+
+======================================================================
+TRAINING WITH DIFFERENTIAL PRIVACY
+======================================================================
+Target δ: 1e-05
+
+Epoch 1/8
+Training:   0%|          | 0/200 [00:00<?, ?it/s]sys:1: UserWarning: Full backward hook is firing when gradients are computed with respect to module outputs since no inputs require gradients. See https://docs.pytorch.org/docs/main/generated/torch.nn.Module.html#torch.nn.Module.register_full_backward_hook for more details.
+  Train Loss: 3.6430 | Perplexity: 38.21
+  Val   Loss: 3.3669 | Perplexity: 28.99
+  Privacy budget (ε): 0.7281339329831141
+
+Epoch 2/8
+  Train Loss: 3.6125 | Perplexity: 37.06
+  Val   Loss: 3.3509 | Perplexity: 28.53
+  Privacy budget (ε): 0.9225752504299958
+
+Epoch 3/8
+  Train Loss: 3.5917 | Perplexity: 36.29
+  Val   Loss: 3.3442 | Perplexity: 28.34
+  Privacy budget (ε): 1.0781961082219362
+
+Epoch 4/8
+  Train Loss: 3.5910 | Perplexity: 36.27
+  Val   Loss: 3.3438 | Perplexity: 28.33
+  Privacy budget (ε): 1.213754822421557
+
+Epoch 5/8
+  Train Loss: 3.5808 | Perplexity: 35.90
+  Val   Loss: 3.3438 | Perplexity: 28.33
+  Privacy budget (ε): 1.3361610580864685
+
+Epoch 6/8
+  Train Loss: 3.5891 | Perplexity: 36.20
+  Val   Loss: 3.3438 | Perplexity: 28.33
+  Privacy budget (ε): 1.448978470818441
+
+Epoch 7/8
+  Train Loss: 3.5779 | Perplexity: 35.80
+  Val   Loss: 3.3438 | Perplexity: 28.33
+  Privacy budget (ε): 1.5543652042157636
+Early stopping triggered (patience=2).
+✓ Model saved to runs/dp_lora_20251122_074958/dp_lora_model
+
+======================================================================
+MODEL SAVE VERIFICATION
+======================================================================
+✓ Model directory exists: runs/dp_lora_20251122_074958/dp_lora_model
+✓ Files saved (7 files):
+  - README.md (0.00 MB)
+  - adapter_config.json (0.00 MB)
+  - adapter_model.safetensors (9.41 MB)
+  - merges.txt (0.44 MB)
+  - special_tokens_map.json (0.00 MB)
+  - tokenizer_config.json (0.00 MB)
+  - vocab.json (0.95 MB)
+
+✓ All critical LoRA adapter files present!
+
+======================================================================
+STEP 4: PRIVACY EVALUATION (MIA)
+======================================================================
+
+======================================================================
+MEMBERSHIP INFERENCE ATTACK EVALUATION
+======================================================================
+MIA train losses: 100%|██████████| 200/200 [00:09<00:00, 20.36it/s]
+MIA test losses: 100%|██████████| 200/200 [00:09<00:00, 20.53it/s]
+
+✓ MIA Results: ROC AUC=0.438, AP=0.474, Acc=43.5%
+✓ Training curves saved to runs/dp_lora_20251122_074958/training_curves.png
+✓ MIA results saved to runs/dp_lora_20251122_074958/mia_results.png
+
+======================================================================
+FINAL RESULTS SUMMARY
+======================================================================
+  Final Validation Loss: 3.3438
+  Final Validation Perplexity: 28.33
+  Final ε: 1.5543652042157636
+  Target δ: 1e-05
+  MIA ROC AUC: 0.438
+
+Outputs saved to: runs/dp_lora_20251122_074958
+
+======================================================================
+TO USE THIS MODEL IN agent_with_dp.py:
+======================================================================
+Set this path in your Colab notebook:
+  os.environ['LORA_DIR'] = 'runs/dp_lora_20251122_074958/dp_lora_model'
+
+Or copy this exact path:
+  runs/dp_lora_20251122_074958/dp_lora_model
+======================================================================
+
+✓ Experiment completed successfully!
+✓ Model ready at: runs/dp_lora_20251122_074958/dp_lora_model

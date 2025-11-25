@@ -1,0 +1,227 @@
+======================================================================
+LoRA FINE-TUNING BASELINE (NO DP)
+======================================================================
+Output directory: runs/lora_baseline_20251122_081927
+Device: cuda
+
+======================================================================
+STEP 1: DATA LOADING AND AUGMENTATION
+======================================================================
+Map: 100%
+ 177/177 [00:00<00:00, 669.58 examples/s]
+
+======================================================================
+DATA AUGMENTATION
+======================================================================
+Original size: 177
+Target size: 177
+✓ Using original dataset without augmentation (for better overfitting)
+Dataset size after augmentation: 177
+
+======================================================================
+STEP 2: TOKENIZATION AND DATA PROCESSING
+======================================================================
+Processing data: 100%|██████████| 177/177 [00:00<00:00, 14708.98it/s]
+✓ Data splits: train=141, val=17, test=19
+✓ AGGRESSIVE overfitting config: r=64, lr=1e-4, batch=4, no regularization
+✓ Small dataset (141 samples) will force memorization!
+
+======================================================================
+MODEL SETUP
+======================================================================
+Loading gpt2...
+Applying LoRA configuration...
+Enabling bias-only training...
+Total parameters: 133,876,992
+Trainable parameters: 9,539,328
+Trainable ratio: 7.13%
+✓ Optimizer: AdamW (lr=0.0001, weight_decay=0.0)
+✓ Scheduler steps: total=1080, warmup=10
+✓ Gradient accumulation steps: 1
+
+======================================================================
+TRAINING (NON-DP BASELINE - AGGRESSIVE OVERFITTING)
+======================================================================
+⚠️  MAXIMUM memorization configuration:
+   - No data augmentation (only 141 training samples)
+   - ZERO regularization (no weight decay, no dropout)
+   - HIGH capacity LoRA (r=64, alpha=128)
+   - AGGRESSIVE learning rate (1e-4)
+   - Small batch size (4) for frequent updates
+   - Extended training (30 epochs)
+   - Target: Force model to MEMORIZE training data!
+
+Epoch 1/30
+  Train Loss: 3.1581 | Perplexity: 23.53
+  Val   Loss: 2.8127 | Perplexity: 16.65
+  Overfitting Gap: -0.3455 (not yet overfitting)
+
+Epoch 2/30
+  Train Loss: 2.5887 | Perplexity: 13.31
+  Val   Loss: 2.5699 | Perplexity: 13.06
+  Overfitting Gap: -0.0188 (not yet overfitting)
+
+Epoch 3/30
+  Train Loss: 2.4038 | Perplexity: 11.06
+  Val   Loss: 2.5010 | Perplexity: 12.19
+  Overfitting Gap: 0.0972 (not yet overfitting)
+
+Epoch 4/30
+  Train Loss: 2.3150 | Perplexity: 10.12
+  Val   Loss: 2.4653 | Perplexity: 11.77
+  Overfitting Gap: 0.1503 (getting there...)
+
+Epoch 5/30
+  Train Loss: 2.2432 | Perplexity: 9.42
+  Val   Loss: 2.4420 | Perplexity: 11.50
+  Overfitting Gap: 0.1988 (getting there...)
+
+Epoch 6/30
+  Train Loss: 2.1870 | Perplexity: 8.91
+  Val   Loss: 2.4291 | Perplexity: 11.35
+  Overfitting Gap: 0.2421 (getting there...)
+
+Epoch 7/30
+  Train Loss: 2.1369 | Perplexity: 8.47
+  Val   Loss: 2.4168 | Perplexity: 11.21
+  Overfitting Gap: 0.2799 (getting there...)
+
+Epoch 8/30
+  Train Loss: 2.0907 | Perplexity: 8.09
+  Val   Loss: 2.4068 | Perplexity: 11.10
+  Overfitting Gap: 0.3161 (good for MIA)
+
+Epoch 9/30
+  Train Loss: 2.0692 | Perplexity: 7.92
+  Val   Loss: 2.3919 | Perplexity: 10.93
+  Overfitting Gap: 0.3227 (good for MIA)
+
+Epoch 10/30
+  Train Loss: 2.0251 | Perplexity: 7.58
+  Val   Loss: 2.3968 | Perplexity: 10.99
+  Overfitting Gap: 0.3717 (good for MIA)
+
+Epoch 11/30
+  Train Loss: 1.9834 | Perplexity: 7.27
+  Val   Loss: 2.4006 | Perplexity: 11.03
+  Overfitting Gap: 0.4172 (good for MIA)
+
+Epoch 12/30
+  Train Loss: 1.9789 | Perplexity: 7.23
+  Val   Loss: 2.3940 | Perplexity: 10.96
+  Overfitting Gap: 0.4152 (good for MIA)
+
+Epoch 13/30
+  Train Loss: 1.9554 | Perplexity: 7.07
+  Val   Loss: 2.3891 | Perplexity: 10.90
+  Overfitting Gap: 0.4337 (good for MIA)
+
+Epoch 14/30
+  Train Loss: 1.9305 | Perplexity: 6.89
+  Val   Loss: 2.3825 | Perplexity: 10.83
+  Overfitting Gap: 0.4520 (good for MIA)
+
+Epoch 15/30
+  Train Loss: 1.9011 | Perplexity: 6.69
+  Val   Loss: 2.3838 | Perplexity: 10.85
+  Overfitting Gap: 0.4826 (good for MIA)
+
+Epoch 16/30
+  Train Loss: 1.8810 | Perplexity: 6.56
+  Val   Loss: 2.3903 | Perplexity: 10.92
+  Overfitting Gap: 0.5093 (EXCELLENT overfitting! 🎯)
+
+Epoch 17/30
+  Train Loss: 1.8540 | Perplexity: 6.39
+  Val   Loss: 2.3838 | Perplexity: 10.85
+  Overfitting Gap: 0.5297 (EXCELLENT overfitting! 🎯)
+
+Epoch 18/30
+  Train Loss: 1.8474 | Perplexity: 6.34
+  Val   Loss: 2.4170 | Perplexity: 11.21
+  Overfitting Gap: 0.5697 (EXCELLENT overfitting! 🎯)
+
+Epoch 19/30
+  Train Loss: 1.8254 | Perplexity: 6.21
+  Val   Loss: 2.4081 | Perplexity: 11.11
+  Overfitting Gap: 0.5826 (EXCELLENT overfitting! 🎯)
+
+Epoch 20/30
+  Train Loss: 1.8033 | Perplexity: 6.07
+  Val   Loss: 2.4022 | Perplexity: 11.05
+  Overfitting Gap: 0.5989 (EXCELLENT overfitting! 🎯)
+
+Epoch 21/30
+  Train Loss: 1.7831 | Perplexity: 5.95
+  Val   Loss: 2.4084 | Perplexity: 11.12
+  Overfitting Gap: 0.6252 (EXCELLENT overfitting! 🎯)
+
+Epoch 22/30
+  Train Loss: 1.7794 | Perplexity: 5.93
+  Val   Loss: 2.4125 | Perplexity: 11.16
+  Overfitting Gap: 0.6331 (EXCELLENT overfitting! 🎯)
+
+Epoch 23/30
+  Train Loss: 1.7747 | Perplexity: 5.90
+  Val   Loss: 2.4210 | Perplexity: 11.26
+  Overfitting Gap: 0.6464 (EXCELLENT overfitting! 🎯)
+
+Epoch 24/30
+  Train Loss: 1.7671 | Perplexity: 5.85
+  Val   Loss: 2.4201 | Perplexity: 11.25
+  Overfitting Gap: 0.6530 (EXCELLENT overfitting! 🎯)
+
+Epoch 25/30
+  Train Loss: 1.7540 | Perplexity: 5.78
+  Val   Loss: 2.4212 | Perplexity: 11.26
+  Overfitting Gap: 0.6673 (EXCELLENT overfitting! 🎯)
+
+Epoch 26/30
+  Train Loss: 1.7318 | Perplexity: 5.65
+  Val   Loss: 2.4206 | Perplexity: 11.25
+  Overfitting Gap: 0.6888 (EXCELLENT overfitting! 🎯)
+
+Epoch 27/30
+  Train Loss: 1.7295 | Perplexity: 5.64
+  Val   Loss: 2.4184 | Perplexity: 11.23
+  Overfitting Gap: 0.6889 (EXCELLENT overfitting! 🎯)
+
+Epoch 28/30
+  Train Loss: 1.7424 | Perplexity: 5.71
+  Val   Loss: 2.4246 | Perplexity: 11.30
+  Overfitting Gap: 0.6822 (EXCELLENT overfitting! 🎯)
+
+Epoch 29/30
+  Train Loss: 1.7377 | Perplexity: 5.68
+  Val   Loss: 2.4215 | Perplexity: 11.26
+  Overfitting Gap: 0.6838 (EXCELLENT overfitting! 🎯)
+
+Epoch 30/30
+  Train Loss: 1.7258 | Perplexity: 5.62
+  Val   Loss: 2.4243 | Perplexity: 11.29
+  Overfitting Gap: 0.6986 (EXCELLENT overfitting! 🎯)
+✓ Model saved to runs/lora_baseline_20251122_081927/lora_model
+
+======================================================================
+STEP 3: MEMBERSHIP ANALYSIS
+======================================================================
+
+======================================================================
+MEMBERSHIP INFERENCE ATTACK EVALUATION
+======================================================================
+MIA train losses: 100%|██████████| 19/19 [00:00<00:00, 20.53it/s]
+MIA test losses: 100%|██████████| 19/19 [00:01<00:00, 18.94it/s]
+
+✓ MIA Results: ROC AUC=0.856, AP=0.831, Acc=73.7%
+✓ Training curves saved to runs/lora_baseline_20251122_081927/training_curves.png
+✓ MIA results saved to runs/lora_baseline_20251122_081927/mia_results.png
+
+======================================================================
+FINAL RESULTS SUMMARY
+======================================================================
+  Final Validation Loss: 2.4243
+  Final Validation Perplexity: 11.29
+  MIA ROC AUC: 0.8559556786703602
+
+Outputs saved to: runs/lora_baseline_20251122_081927
+Experiment completed successfully!

@@ -1,0 +1,50 @@
+
+
+
+
+
+
+
+Loading baseline LoRA from: runs/lora_baseline_20251108_212655/lora_model on device cuda
+The following generation flags are not valid and may be ignored: ['early_stopping']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+/tmp/ipython-input-2487872145.py:102: FutureWarning: Possible nested set at position 3
+  text = re.sub(r'\\[[0-9,\\-\\s]{1,10}\\]', '', text)
+
+=== SUMMARY ===
+ Chief Complaint: Patient Jane Doe (555-123-4567) presents with cough and fever for 3 days.
+Denies chest pain. Has mild sore throat. No shortness of breath. Took acetaminophen.
+Physical exam reveals mild erythema of the oropharynx, lungs clear. Vitals stable.
+
+HPI:
+
+=== SOAP ===
+ Subjective: [doctor] hi , ms. miller . how're you doing today ? i'm alright . what's been going on with your blood pressure medication ? have they taken it? when did this happen ? were they taking anything else besides ibuprofen ... do things seem to be working okay right now ? is there any side effects at all ?
+[patient][doctor]: yeah , so we've had some bad colds recently but nothing that caused us problems yet . just my symptoms since then as far back in September : weakness in swallowing feeling lightheaded etc , um well our patients usually fall asleep after drinking one glass last night because their body temperature gets too low while eating ice cream sometimes which makes them sleepy even though water freezes up into sugar nuggets during sleep especially if eaten first thing morning should really help relieve hypoglycemia from overeating more often than later through exercising maybe also adding weight loss therapy probably helps keeping food intake relatively balanced better balance may improve quality over time could add cardio training plus other activities such exercise might enhance strength work helpful dietitian can provide additional nutrition egotistical stress management will increase self esteem without losing control again ok I know about alcohol use before bedtime has improved ever having sex once an hour prior vaginal intercourse was fine using caesarean postpartum would definitely make sense considering both childbirth complications combined multiple times per week seems feasible based upon research study
+
+Objective: Vitals stable; oropharynx mildly erythematous; lungs clear; no respiratory distress.
+
+Assessment: Likely self-limited upper respiratory illness; low concern for pneumonia.
+
+Plan: Supportive care (hydration, antipyretics), education, return precautions, and follow-up if persistent/worsening.
+
+=== CODES ===
+ [
+  {
+    "system": "ICD-10",
+    "code": "J06.9",
+    "desc": "Acute upper respiratory infection, unspecified",
+    "confidence": 0.62
+  },
+  {
+    "system": "CPT",
+    "code": "99213",
+    "desc": "Est. patient office/outpatient, low MDM",
+    "confidence": 0.45
+  }
+]
+
+=== ISSUES ===
+ ["Missing 'Subjective:' section header.", "Missing 'Objective:' section header.", "Missing 'Assessment:' section header.", "Missing 'Plan:' section header."]
+
+=== PRIVACY LOG ===
+ ['Intake: PHI scrubbed.']

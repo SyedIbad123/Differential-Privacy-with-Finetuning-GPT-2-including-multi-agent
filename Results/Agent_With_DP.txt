@@ -1,0 +1,41 @@
+✓ Auto-detected LoRA model: /content/runs/dp_lora_20251119_115251/dp_lora_model
+Loading LoRA adapter from: /content/runs/dp_lora_20251119_115251/dp_lora_model
+✓ LoRA adapter loaded successfully
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+
+=== SUMMARY ===
+ Chief Complaint: Patient John Doe (the patient) presents with cough and fever for 3 days.
+
+HPI: Denies chest pain. Has mild sore throat. No shortness of breath. Took acetaminophen.
+Physical exam reveals mild erythema of the oropharynx, lungs clear. Vitals stable.
+
+=== SOAP ===
+ Subjective: The first section is about how to write your own soap notes in an easy way that you can use as part on any other product page—and it's also very helpful if someone has written one yourself! The second chapter describes what kind I recommend using this method when writing my products because there will be some things which may seem obvious but they're actually quite important…especially since most people don't know much more than "how" do we make soap? And finally, here's where our goal becomes even clearer...to help patients understand why their medicine works better by providing them information relevant enough at every step along the path from start up through delivery….sooner rather then later…..but still....you'll find out exactly WHY YOU'RE SUPPOSED TO USE THIS PRODUCT!!!
+
+Objective: Vitals stable; oropharynx mildly erythematous; lungs clear; no respiratory distress.
+
+Assessment: Likely self-limited upper respiratory illness; low concern for pneumonia.
+
+Plan: Supportive care (hydration, antipyretics), education, return precautions, and follow-up if persistent/worsening.
+
+=== CODES ===
+ [
+  {
+    "system": "ICD-10",
+    "code": "J06.9",
+    "desc": "Acute upper respiratory infection, unspecified",
+    "confidence": 0.62
+  },
+  {
+    "system": "CPT",
+    "code": "99213",
+    "desc": "Est. patient office/outpatient, low MDM",
+    "confidence": 0.45
+  }
+]
+
+=== ISSUES ===
+ []
+
+=== PRIVACY LOG ===
+ ['Intake: PHI scrubbed.']
