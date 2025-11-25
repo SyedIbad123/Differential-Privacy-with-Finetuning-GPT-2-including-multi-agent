@@ -1,0 +1,13 @@
+transformers
+datasets
+torch==2.8.0
+torchvision==0.23.0
+torchaudio==2.8.0
+opacus
+scikit-learn
+matplotlib
+huggingface-hub==0.34.0
+langchain
+langgraph
+peft
+accelerate
